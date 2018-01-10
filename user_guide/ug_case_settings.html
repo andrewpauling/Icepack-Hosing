@@ -1,0 +1,2129 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>3.4. Case Settings &#8212; Icepack 1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.6. Troubleshooting" href="ug_troubleshooting.html" />
+    <link rel="prev" title="3.3. Testing Icepack" href="ug_testing.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ug_troubleshooting.html" title="3.6. Troubleshooting"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="ug_testing.html" title="3.3. Testing Icepack"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Icepack 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">3. User Guide</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="case-settings">
+<span id="id1"></span><h1>3.4. Case Settings<a class="headerlink" href="#case-settings" title="Permalink to this headline">¶</a></h1>
+<p>There are two important files that define the case, <strong>icepack.settings</strong> and
+<strong>icepack_in</strong>.  <strong>icepack.settings</strong> is a list of env variables that define many
+values used to setup, build and run the case.  <strong>icepack_in</strong> is the input namelist file
+for the icepack driver.  Variables in both files are described below.</p>
+<div class="section" id="table-of-icepack-settings">
+<span id="tabsettings"></span><h2>3.4.1. Table of Icepack Settings<a class="headerlink" href="#table-of-icepack-settings" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>icepack.settings</strong> file is reasonably well self documented.  Several of
+the variables defined in the file are not used in Icepack.  They exist
+to support the CICE model.</p>
+<table border="1" class="docutils" id="id9">
+<caption><span class="caption-text"><em>Icepack settings</em></span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="33%" />
+<col width="27%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">variable</th>
+<th class="head">options/format</th>
+<th class="head">description</th>
+<th class="head">recommended value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ICE_MACHINE</td>
+<td>&#160;</td>
+<td>machine name</td>
+<td>set by icepack.create.case</td>
+</tr>
+<tr class="row-odd"><td>ICE_CASENAME</td>
+<td>&#160;</td>
+<td>case name</td>
+<td>set by icepack.create.case</td>
+</tr>
+<tr class="row-even"><td>ICE_SANDBOX</td>
+<td>&#160;</td>
+<td>sandbox directory</td>
+<td>set by icepack.create.case</td>
+</tr>
+<tr class="row-odd"><td>ICE_SCRIPTS</td>
+<td>&#160;</td>
+<td>scripts directory</td>
+<td>set by icepack.create.case</td>
+</tr>
+<tr class="row-even"><td>ICE_CASEDIR</td>
+<td>&#160;</td>
+<td>case directory</td>
+<td>set by icepack.create.case</td>
+</tr>
+<tr class="row-odd"><td>ICE_RUNDIR</td>
+<td>&#160;</td>
+<td>run directory</td>
+<td>set by icepack.create.case</td>
+</tr>
+<tr class="row-even"><td>ICE_OBJDIR</td>
+<td>&#160;</td>
+<td>compile directory</td>
+<td>${ICE_RUNDIR}/compile</td>
+</tr>
+<tr class="row-odd"><td>ICE_RSTDIR</td>
+<td>&#160;</td>
+<td>unused</td>
+<td>${ICE_RUNDIR}/restart</td>
+</tr>
+<tr class="row-even"><td>ICE_HSTDIR</td>
+<td>&#160;</td>
+<td>unused</td>
+<td>${ICE_RUNDIR}/history</td>
+</tr>
+<tr class="row-odd"><td>ICE_LOGDIR</td>
+<td>&#160;</td>
+<td>log directory</td>
+<td>${ICE_CASEDIR}/logs</td>
+</tr>
+<tr class="row-even"><td>ICE_RSTPFILE</td>
+<td>&#160;</td>
+<td>unused</td>
+<td>undefined</td>
+</tr>
+<tr class="row-odd"><td>ICE_DRVOPT</td>
+<td>&#160;</td>
+<td>unused</td>
+<td>icepack</td>
+</tr>
+<tr class="row-even"><td>ICE_CONSTOPT</td>
+<td>&#160;</td>
+<td>unused</td>
+<td>cice</td>
+</tr>
+<tr class="row-odd"><td>ICE_IOTYPE</td>
+<td>&#160;</td>
+<td>unused</td>
+<td>none</td>
+</tr>
+<tr class="row-even"><td>ICE_CLEANBUILD</td>
+<td>true,false</td>
+<td>automatically clean before building</td>
+<td>true</td>
+</tr>
+<tr class="row-odd"><td>ICE_GRID</td>
+<td>col</td>
+<td>grid</td>
+<td>col</td>
+</tr>
+<tr class="row-even"><td>ICE_NXGLOB</td>
+<td>4</td>
+<td>number of gridcells</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>ICE_NTASKS</td>
+<td>1</td>
+<td>number of tasks, must be set to 1</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>ICE_NTHRDS</td>
+<td>1</td>
+<td>number of threads per task, must be set to 1</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>ICE_TEST</td>
+<td>&#160;</td>
+<td>test setting if using a test</td>
+<td>set by icepack.create.case</td>
+</tr>
+<tr class="row-even"><td>ICE_TESTNAME</td>
+<td>&#160;</td>
+<td>test name if using a test</td>
+<td>set by icepack.create.case</td>
+</tr>
+<tr class="row-odd"><td>ICE_BASELINE</td>
+<td>&#160;</td>
+<td>baseline directory name, associated with icepack.create.case -bd</td>
+<td>set by icepack.create.case</td>
+</tr>
+<tr class="row-even"><td>ICE_BASEGEN</td>
+<td>&#160;</td>
+<td>baseline directory name for regression generation, associated with icepack.create.case -bg</td>
+<td>set by icepack.create.case</td>
+</tr>
+<tr class="row-odd"><td>ICE_BASECOM</td>
+<td>&#160;</td>
+<td>baseline directory name for regression comparison, associated with icepack.create.case -bc</td>
+<td>set by icepack.create.case</td>
+</tr>
+<tr class="row-even"><td>ICE_BFBCOMP</td>
+<td>&#160;</td>
+<td>location of case for comparison, associated with icepack.create.case -td</td>
+<td>set by icepack.create.case</td>
+</tr>
+<tr class="row-odd"><td>ICE_SPVAL</td>
+<td>&#160;</td>
+<td>unused</td>
+<td>UnDeFiNeD</td>
+</tr>
+<tr class="row-even"><td>ICE_RUNLENGTH</td>
+<td>&#160;</td>
+<td>batch run length default</td>
+<td><blockquote class="first last">
+<div>00:10:00</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>ICE_THREADED</td>
+<td>true,false</td>
+<td>force threading in compile, will always compile threaded if NTHRDS is gt 1</td>
+<td>false</td>
+</tr>
+<tr class="row-even"><td>NICELYR</td>
+<td>&#160;</td>
+<td>number of vertical layers in the ice</td>
+<td>7</td>
+</tr>
+<tr class="row-odd"><td>NSNWLYR</td>
+<td>&#160;</td>
+<td>number of vertical layers in the snow</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>NICECAT</td>
+<td>&#160;</td>
+<td>number of ice thickness categories</td>
+<td>5</td>
+</tr>
+<tr class="row-odd"><td>TRAGE</td>
+<td>0,1</td>
+<td>ice age tracer</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>TRFY</td>
+<td>0,1</td>
+<td>first-year ice area tracer</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>TRLVL</td>
+<td>0,1</td>
+<td>deformed ice tracer</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>TRPND</td>
+<td>0,1</td>
+<td>melt pond tracer</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>NTRAERO</td>
+<td>&#160;</td>
+<td>number of aerosol tracers</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>TRBRI</td>
+<td>0,1</td>
+<td>brine height tracer</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>TRZS</td>
+<td>0,1</td>
+<td>zsalinity tracer, needs TRBRI=1</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>TRBGCS</td>
+<td>0,1</td>
+<td>skeletal layer tracer, needs TRBGCZ=0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>TRBGCZ</td>
+<td>0,1</td>
+<td>zbgc tracers, needs TRBGCS=0 and TRBRI=1</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>NBGCLYR</td>
+<td>&#160;</td>
+<td>number of zbgc layers</td>
+<td>7</td>
+</tr>
+<tr class="row-odd"><td>TRZAERO</td>
+<td>0-6</td>
+<td>number of z aerosol tracers</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>TRALG</td>
+<td>0,1,2,3</td>
+<td>number of algal tracers</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>TRDOC</td>
+<td>0,1,2,3</td>
+<td>number of dissolved organic carbon</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>TRDIC</td>
+<td>0,1</td>
+<td>number of dissolved inorganic carbon</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>TRDON</td>
+<td>0,1</td>
+<td>number of dissolved organic nitrogen</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>TRFEP</td>
+<td>0,1,2</td>
+<td>number of particulate iron tracers</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>TRFED</td>
+<td>0,1,2</td>
+<td>number of dissolved iron tracers</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>CAM_ICE</td>
+<td>&#160;</td>
+<td>unused</td>
+<td>no</td>
+</tr>
+<tr class="row-odd"><td>DITTO</td>
+<td>&#160;</td>
+<td>unused</td>
+<td>no</td>
+</tr>
+<tr class="row-even"><td>BARRIERS</td>
+<td>&#160;</td>
+<td>unused</td>
+<td>no</td>
+</tr>
+<tr class="row-odd"><td>ICE_BLDDEBUG</td>
+<td>true,false</td>
+<td>turn on compile debug flags</td>
+<td>false</td>
+</tr>
+<tr class="row-even"><td>NUMIN</td>
+<td>&#160;</td>
+<td>unused</td>
+<td>11</td>
+</tr>
+<tr class="row-odd"><td>NUMAX</td>
+<td>&#160;</td>
+<td>unused</td>
+<td>99</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="table-of-namelist-inputs">
+<span id="tabnamelist"></span><h2>3.4.2. Table of Namelist Inputs<a class="headerlink" href="#table-of-namelist-inputs" title="Permalink to this headline">¶</a></h2>
+<p>CHECK</p>
+<p>Namelist is part of the icepack driver code and is used to setup testing of the
+column physics.</p>
+<table border="1" class="docutils" id="id10">
+<span id="tab-namelist"></span><caption><span class="caption-text"><em>Namelist Inputs</em></span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="31%" />
+<col width="15%" />
+<col width="38%" />
+<col width="15%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">variable</th>
+<th class="head">options/format</th>
+<th class="head">description</th>
+<th class="head">recommended value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><em>setup_nml</em></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td><em>Time, Diagnostics</em></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">days_per_year</span></code></td>
+<td><code class="docutils literal"><span class="pre">360</span></code> or <code class="docutils literal"><span class="pre">365</span></code></td>
+<td>number of days in a model year</td>
+<td>365</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">use_leap_years</span></code></td>
+<td>true/false</td>
+<td>if true, include leap days</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">year_init</span></code></td>
+<td>yyyy</td>
+<td>the initial year, if not using restart</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">istep0</span></code></td>
+<td>integer</td>
+<td>initial time step number</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">dt</span></code></td>
+<td>seconds</td>
+<td>thermodynamics time step length</td>
+<td><ol class="first last arabic simple" start="3600">
+<li></li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">npt</span></code></td>
+<td>integer</td>
+<td>total number of time steps to take</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ndtd</span></code></td>
+<td>integer</td>
+<td>number of dynamics/advection/ridging/steps per thermo timestep</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td><em>Initialization/Restarting</em></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ice_ic</span></code></td>
+<td><code class="docutils literal"><span class="pre">default</span></code></td>
+<td>latitude and sst dependent</td>
+<td>default</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">none</span></code></td>
+<td>no ice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>path/file</td>
+<td>restart file name</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">restart_dir</span></code></td>
+<td>path/</td>
+<td>path to restart directory</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">dumpfreq</span></code></td>
+<td><code class="docutils literal"><span class="pre">y</span></code></td>
+<td>write restart every <code class="docutils literal"><span class="pre">dumpfreq_n</span></code> years</td>
+<td>y</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">m</span></code></td>
+<td>write restart every <code class="docutils literal"><span class="pre">dumpfreq_n</span></code> months</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">d</span></code></td>
+<td>write restart every <code class="docutils literal"><span class="pre">dumpfreq_n</span></code> days</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td><em>Model Output</em></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">diagfreq</span></code></td>
+<td>integer</td>
+<td>frequency of diagnostic output in <code class="docutils literal"><span class="pre">dt</span></code></td>
+<td>24</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><em>e.g.</em>, 10</td>
+<td>once every 10 time steps</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">diag_file</span></code></td>
+<td>filename</td>
+<td>diagnostic output file (script may reset)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><em>grid_nml</em></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td><em>Grid</em></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">kcatbound</span></code></td>
+<td><code class="docutils literal"><span class="pre">0</span></code></td>
+<td>original category boundary formula</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">1</span></code></td>
+<td>new formula with round numbers</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">2</span></code></td>
+<td>WMO standard categories</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">-1</span></code></td>
+<td>one category</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><em>tracer_nml</em></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td><em>Tracers</em></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">tr_iage</span></code></td>
+<td>true/false</td>
+<td>ice age</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">tr_FY</span></code></td>
+<td>true/false</td>
+<td>first-year ice area</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">tr_lvl</span></code></td>
+<td>true/false</td>
+<td>level ice area and volume</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">tr_pond_cesm</span></code></td>
+<td>true/false</td>
+<td>CESM melt ponds</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">tr_pond_topo</span></code></td>
+<td>true/false</td>
+<td>topo melt ponds</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">tr_pond_lvl</span></code></td>
+<td>true/false</td>
+<td>level-ice melt ponds</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">tr_aero</span></code></td>
+<td>true/false</td>
+<td>aerosols</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><em>thermo_nml</em></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td><em>Thermodynamics</em></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">kitd</span></code></td>
+<td><code class="docutils literal"><span class="pre">0</span></code></td>
+<td>delta function ITD approximation</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">1</span></code></td>
+<td>linear remapping ITD approximation</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ktherm</span></code></td>
+<td><code class="docutils literal"><span class="pre">0</span></code></td>
+<td>zero-layer thermodynamic model</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">1</span></code></td>
+<td>Bitz and Lipscomb thermodynamic model</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">2</span></code></td>
+<td>mushy-layer thermodynamic model</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">conduct</span></code></td>
+<td><code class="docutils literal"><span class="pre">MU71</span></code></td>
+<td>conductivity <a class="reference internal" href="../zreferences.html#mu71" id="id2">[34]</a></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">bubbly</span></code></td>
+<td>conductivity <a class="reference internal" href="../zreferences.html#petb07" id="id3">[37]</a></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">a_rapid_mode</span></code></td>
+<td>real</td>
+<td>brine channel diameter</td>
+<td>0.5x10 <span class="math">\(^{-3}\)</span> m</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">Rac_rapid_mode</span></code></td>
+<td>real</td>
+<td>critical Rayleigh number</td>
+<td>10</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">aspect_rapid_mode</span></code></td>
+<td>real</td>
+<td>brine convection aspect ratio</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dSdt_slow_mode</span></code></td>
+<td>real</td>
+<td>drainage strength parameter</td>
+<td>-1.5x10 <span class="math">\(^{-7}\)</span> m/s/K</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">phi_c_slow_mode</span></code></td>
+<td><span class="math">\(0&lt;\phi_c &lt; 1\)</span></td>
+<td>critical liquid fraction</td>
+<td>0.05</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">phi_i_mushy</span></code></td>
+<td><span class="math">\(0&lt;\phi_i &lt; 1\)</span></td>
+<td>solid fraction at lower boundary</td>
+<td>0.85</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><em>dynamics_nml</em></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td><em>Dynamics</em></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">kstrength</span></code></td>
+<td><code class="docutils literal"><span class="pre">0</span></code></td>
+<td>ice strength formulation <a class="reference internal" href="../zreferences.html#hibler79" id="id4">[17]</a></td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">1</span></code></td>
+<td>ice strength formulation <a class="reference internal" href="../zreferences.html#rothrock75" id="id5">[38]</a></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">krdg_partic</span></code></td>
+<td><code class="docutils literal"><span class="pre">0</span></code></td>
+<td>old ridging participation function</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">1</span></code></td>
+<td>new ridging participation function</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">krdg_redist</span></code></td>
+<td><code class="docutils literal"><span class="pre">0</span></code></td>
+<td>old ridging redistribution function</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">1</span></code></td>
+<td>new ridging redistribution function</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">mu_rdg</span></code></td>
+<td>real</td>
+<td>e-folding scale of ridged ice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">Cf</span></code></td>
+<td>real</td>
+<td>ratio of ridging work to PE change in ridging</td>
+<td><ol class="first last arabic simple" start="17">
+<li></li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><em>shortwave_nml</em></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td><em>Shortwave</em></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">shortwave</span></code></td>
+<td><code class="docutils literal"><span class="pre">ccsm3</span></code></td>
+<td>NCAR CCSM3 distribution method</td>
+<td>‘dEdd’</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">dEdd</span></code></td>
+<td>Delta-Eddington method</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">albedo_type</span></code></td>
+<td><code class="docutils literal"><span class="pre">ccsm3</span></code></td>
+<td>NCAR CCSM3 albedos</td>
+<td>‘ccsm3’</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">constant</span></code></td>
+<td>four constant albedos</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">albicev</span></code></td>
+<td><span class="math">\(0&lt;\alpha &lt;1\)</span></td>
+<td>visible ice albedo for thicker ice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">albicei</span></code></td>
+<td><span class="math">\(0&lt;\alpha &lt;1\)</span></td>
+<td>near infrared ice albedo for thicker ice</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">albsnowv</span></code></td>
+<td><span class="math">\(0&lt;\alpha &lt;1\)</span></td>
+<td>visible, cold snow albedo</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">albsnowi</span></code></td>
+<td><span class="math">\(0&lt;\alpha &lt;1\)</span></td>
+<td>near infrared, cold snow albedo</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ahmax</span></code></td>
+<td>real</td>
+<td>albedo is constant above this thickness</td>
+<td>0.3 m</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">R_ice</span></code></td>
+<td>real</td>
+<td>tuning parameter for sea ice albedo from Delta-Eddington shortwave</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">R_pnd</span></code></td>
+<td>real</td>
+<td>… for ponded sea ice albedo …</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">R_snw</span></code></td>
+<td>real</td>
+<td>… for snow (broadband albedo) …</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">dT_mlt</span></code></td>
+<td>real</td>
+<td><span class="math">\(\Delta\)</span> temperature per <span class="math">\(\Delta\)</span> snow grain radius</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">rsnw_mlt</span></code></td>
+<td>real</td>
+<td>maximum melting snow grain radius</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">kalg</span></code></td>
+<td>real</td>
+<td>absorption coefficient for algae</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><em>ponds_nml</em></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td><em>Melt Ponds</em></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">hp1</span></code></td>
+<td>real</td>
+<td>critical ice lid thickness for topo ponds</td>
+<td>0.01 m</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">hs0</span></code></td>
+<td>real</td>
+<td>snow depth of transition to bare sea ice</td>
+<td>0.03 m</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">hs1</span></code></td>
+<td>real</td>
+<td>snow depth of transition to pond ice</td>
+<td>0.03 m</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dpscale</span></code></td>
+<td>real</td>
+<td>time scale for flushing in permeable ice</td>
+<td><span class="math">\(1\times 10^{-3}\)</span></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">frzpnd</span></code></td>
+<td><code class="docutils literal"><span class="pre">hlid</span></code></td>
+<td>Stefan refreezing with pond ice thickness</td>
+<td>‘hlid’</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">cesm</span></code></td>
+<td>CESM refreezing empirical formula</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">rfracmin</span></code></td>
+<td><span class="math">\(0 \le r_{min} \le 1\)</span></td>
+<td>minimum melt water added to ponds</td>
+<td>0.15</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">rfracmax</span></code></td>
+<td><span class="math">\(0 \le r_{max} \le 1\)</span></td>
+<td>maximum melt water added to ponds</td>
+<td>1.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">pndaspect</span></code></td>
+<td>real</td>
+<td>aspect ratio of pond changes (depth:area)</td>
+<td>0.8</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><em>forcing_nml</em></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td><em>Forcing</em></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">formdrag</span></code></td>
+<td>true/false</td>
+<td>calculate form drag</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">atmbndy</span></code></td>
+<td><code class="docutils literal"><span class="pre">default</span></code></td>
+<td>stability-based boundary layer</td>
+<td>‘default’</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">constant</span></code></td>
+<td>bulk transfer coefficients</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">fyear_init</span></code></td>
+<td>yyyy</td>
+<td>first year of atmospheric forcing data</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ycycle</span></code></td>
+<td>integer</td>
+<td>number of years in forcing data cycle</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">atm_data_type</span></code></td>
+<td><code class="docutils literal"><span class="pre">default</span></code></td>
+<td>constant values defined in the code</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">clim</span></code></td>
+<td>monthly climatology</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">CFS</span></code></td>
+<td>CFS model output</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">ISPOL</span></code></td>
+<td>ISPOL experiment data</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">data_dir</span></code></td>
+<td>path/</td>
+<td>path to forcing data directory</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">calc_strair</span></code></td>
+<td>true</td>
+<td>calculate wind stress and speed</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>false</td>
+<td>read wind stress and speed from files</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">highfreq</span></code></td>
+<td>true/false</td>
+<td>high-frequency atmo coupling</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">natmiter</span></code></td>
+<td>integer</td>
+<td>number of atmo boundary layer iterations</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">calc_Tsfc</span></code></td>
+<td>true/false</td>
+<td>calculate surface temperature</td>
+<td><code class="docutils literal"><span class="pre">.true.</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">precip_units</span></code></td>
+<td><code class="docutils literal"><span class="pre">mks</span></code></td>
+<td>liquid precipitation data units</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">mm_per_month</span></code></td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">mm_per_sec</span></code></td>
+<td>(same as MKS units)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">tfrz_option</span></code></td>
+<td><code class="docutils literal"><span class="pre">minus1p8</span></code></td>
+<td>constant ocean freezing temperature (<span class="math">\(-1.8^\circ C\)</span>)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">linear_salt</span></code></td>
+<td>linear function of salinity (ktherm=1)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">mushy</span></code></td>
+<td>matches mushy-layer thermo (ktherm=2)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ustar_min</span></code></td>
+<td>real</td>
+<td>minimum value of ocean friction velocity</td>
+<td>0.0005 m/s</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">fbot_xfer_type</span></code></td>
+<td><code class="docutils literal"><span class="pre">constant</span></code></td>
+<td>constant ocean heat transfer coefficient</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">Cdn_ocn</span></code></td>
+<td>variable ocean heat transfer coefficient</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">update_ocn_f</span></code></td>
+<td>true</td>
+<td>include frazil water/salt fluxes in ocn fluxes</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>false</td>
+<td>do not include (when coupling with POP)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">l_mpond_fresh</span></code></td>
+<td>true</td>
+<td>retain (topo) pond water until ponds drain</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>false</td>
+<td>release (topo) pond water immediately to ocean</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">oceanmixed_ice</span></code></td>
+<td>true/false</td>
+<td>active ocean mixed layer calculation</td>
+<td><code class="docutils literal"><span class="pre">.true.</span></code> (if uncoupled)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ocn_data_type</span></code></td>
+<td><code class="docutils literal"><span class="pre">default</span></code></td>
+<td>constant values defined in the code</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">ISPOL</span></code></td>
+<td>ISPOL experiment data</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">bgc_data_type</span></code></td>
+<td><code class="docutils literal"><span class="pre">default</span></code></td>
+<td>constant values defined in the code</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td><code class="docutils literal"><span class="pre">ISPOL</span></code></td>
+<td>ISPOL experiment data</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">oceanmixed_file</span></code></td>
+<td>filename</td>
+<td>data file containing ocean forcing data</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">restore_ocn</span></code></td>
+<td>true/false</td>
+<td>restore sst to data</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">trestore</span></code></td>
+<td>integer</td>
+<td>sst restoring time scale (days)</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><em>zbgc_nml</em></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td><em>Biogeochemistry</em></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">tr_brine</span></code></td>
+<td>true/false</td>
+<td>brine height tracer (needs TRBRI 1 in comp_ice)</td>
+<td><code class="docutils literal"><span class="pre">.true.</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">restart_hbrine</span></code></td>
+<td>true/false</td>
+<td>restart the brine height tracer (automatically turned on if restart = .true.)</td>
+<td><code class="docutils literal"><span class="pre">.false.</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">tr_zaero</span></code></td>
+<td>true/false</td>
+<td>turns on black carbon and dust aerosols</td>
+<td><code class="docutils literal"><span class="pre">.false.</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">modal_aero</span></code></td>
+<td>true/false</td>
+<td>turns on a modal aerosol option</td>
+<td><code class="docutils literal"><span class="pre">.false.</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">skl_bgc</span></code></td>
+<td>true/false</td>
+<td>turns on a single bottom layer biogeochemistry. z_tracers and solve_zbgc must be false</td>
+<td><code class="docutils literal"><span class="pre">.false.</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">z_tracers</span></code></td>
+<td>true/false</td>
+<td>turns on a vertically resolved transport</td>
+<td><code class="docutils literal"><span class="pre">.true.</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dEdd_algae</span></code></td>
+<td>true/false</td>
+<td>Include radiative impact of algae and aerosols in the delta-Eddington shortwave scheme. Requires shortwave = ‘dEdd’.</td>
+<td><code class="docutils literal"><span class="pre">.false.</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">solve_zbgc</span></code></td>
+<td>true/false</td>
+<td>turns on the biochemistry using z_tracers (specify algal numbers in comp_ice TRALG)</td>
+<td><code class="docutils literal"><span class="pre">.true.</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">bgc_flux_type</span></code></td>
+<td><code class="docutils literal"><span class="pre">Jin2006</span></code> or <code class="docutils literal"><span class="pre">default</span></code></td>
+<td>ice–ocean flux type for bottom layer tracers only <a class="reference internal" href="../zreferences.html#jdwstwlg06" id="id6">[23]</a></td>
+<td><code class="docutils literal"><span class="pre">Jin2006</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">restore_bgc</span></code></td>
+<td>true/false</td>
+<td>restores upper ocean concentration fields to data values for nitrate and silicate</td>
+<td><code class="docutils literal"><span class="pre">.false.</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">restart_bgc</span></code></td>
+<td>true/false</td>
+<td>restarts biogeochemical tracers (automatically turned on if restart = .true.)</td>
+<td><code class="docutils literal"><span class="pre">.false.</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">scale_bgc</span></code></td>
+<td>true/false</td>
+<td>Initialize biogeochemical profiles to scale with prognosed salinity profile</td>
+<td><code class="docutils literal"><span class="pre">.false.</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">solve_zsal</span></code></td>
+<td>true/false</td>
+<td>prognostic salinity tracer used with ktherm = 1</td>
+<td><code class="docutils literal"><span class="pre">.false.</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">restart_zsal</span></code></td>
+<td>true/false</td>
+<td>restarts zsalinity</td>
+<td><code class="docutils literal"><span class="pre">.false.</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">bgc_data_dir</span></code></td>
+<td><code class="docutils literal"><span class="pre">/nitrate_and_silicate/forcing_directory/</span></code></td>
+<td>&#160;</td>
+<td>‘<code class="docutils literal"><span class="pre">/nitrate_and_silicate/forcing_directory/</span></code>’</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">sil_data_type</span></code></td>
+<td><code class="docutils literal"><span class="pre">default</span></code> or <code class="docutils literal"><span class="pre">NICE</span></code> or <code class="docutils literal"><span class="pre">ISPOL</span></code> or <code class="docutils literal"><span class="pre">clim</span></code></td>
+<td>fixed, spatially homogeneous value for silicate. ‘clim’ data file (see ice_forcing_bgc.F90) <a class="reference internal" href="../zreferences.html#glba06" id="id7">[15]</a></td>
+<td><code class="docutils literal"><span class="pre">'default'</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">nit_data_type</span></code></td>
+<td><code class="docutils literal"><span class="pre">default</span></code> or <code class="docutils literal"><span class="pre">NICE</span></code> or <code class="docutils literal"><span class="pre">ISPOL</span></code> or <code class="docutils literal"><span class="pre">clim</span></code></td>
+<td>fixed, spatially homogeneous value for nitrate. ‘clim’ data file (see ice_forcing_bgc.F90) <a class="reference internal" href="../zreferences.html#glba06" id="id8">[15]</a></td>
+<td><code class="docutils literal"><span class="pre">'default'</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">fe_data_type</span></code></td>
+<td><code class="docutils literal"><span class="pre">default</span></code></td>
+<td>fixed, spatially homogeneous value for iron</td>
+<td><code class="docutils literal"><span class="pre">'default'</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">tr_bgc_Nit</span></code></td>
+<td>true/false</td>
+<td>nitrate tracer</td>
+<td><code class="docutils literal"><span class="pre">.true.</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">tr_bgc_C</span></code></td>
+<td>true/false</td>
+<td>dissolved organic carbon tracers and dissolved inorganic carbon tracers (not yet implemented)</td>
+<td><code class="docutils literal"><span class="pre">.true.</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">tr_bgc_chl</span></code></td>
+<td>true/false</td>
+<td>dummy variable for now. Chl is simply fixed ratio of algal Nitrogen</td>
+<td><code class="docutils literal"><span class="pre">.false.</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">tr_bgc_Am</span></code></td>
+<td>true/false</td>
+<td>Ammonium</td>
+<td><code class="docutils literal"><span class="pre">.true.</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">tr_bgc_Sil</span></code></td>
+<td>true/false</td>
+<td>Silicate</td>
+<td><code class="docutils literal"><span class="pre">.true.</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">tr_bgc_DMS</span></code></td>
+<td>true/false</td>
+<td>Three tracers: DMS dimethyl sulfide, DMSPp (particulate, assumed to be a fixed ratio of sulfur to algal nitrogen) and DMSPd (dissolved)</td>
+<td><code class="docutils literal"><span class="pre">.true.</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">tr_bgc_PON</span></code></td>
+<td>true/false</td>
+<td>passive purely mobile ice tracer with ocean concentration equivalent to nitrate</td>
+<td><code class="docutils literal"><span class="pre">.false.</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">tr_bgc_hum</span></code></td>
+<td>true/false</td>
+<td>refractory DOC or DON (units depend on the ocean source)</td>
+<td><code class="docutils literal"><span class="pre">.true.</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">tr_bgc_DON</span></code></td>
+<td>true/false</td>
+<td>dissolved organic nitrogen</td>
+<td><code class="docutils literal"><span class="pre">.true.</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">tr_bgc_Fe</span></code></td>
+<td>true/false</td>
+<td>dissolved iron and particulate iron</td>
+<td><code class="docutils literal"><span class="pre">.true.</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">grid_o</span></code></td>
+<td>real</td>
+<td>ice-ocean surface layer thickness (bgc transport scheme)</td>
+<td>0.006</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">grid_o_t</span></code></td>
+<td>real</td>
+<td>ice-atmosphere surface layer thickness (bgc transport scheme)</td>
+<td>0.006</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">l_sk</span></code></td>
+<td>real</td>
+<td>length scale in gravity drainage parameterization (bgc transport scheme)</td>
+<td>0.024</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">grid_oS</span></code></td>
+<td>real</td>
+<td>ice-ocean surface layer thickness (zsalinity transport scheme)</td>
+<td>0.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">l_skS</span></code></td>
+<td>real</td>
+<td>ice-atmosphere surface layer thickness (zsalinity transport scheme)</td>
+<td>0.028</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">phi_snow</span></code></td>
+<td>real</td>
+<td>snow porosity at the ice-snow interface. if <span class="math">\(&lt;0\)</span> then phi_snow is computed from snow density</td>
+<td>-0.3</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">initbio_frac</span></code></td>
+<td>real</td>
+<td>for each bgc tracer, specifies the fraction of the ocean concentration that is retained in the ice during initial new ice formation</td>
+<td>0.8</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">frazil_scav</span></code></td>
+<td>real</td>
+<td>for each bgc tracer, specifies the fraction or multiple of the ocean concentration that is retained in the ice from frazil ice formation</td>
+<td>0.8</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ratio_si2N_diatoms</span></code></td>
+<td>real</td>
+<td>algal Si to N (<span class="math">\(mol/mol\)</span>) for diatoms</td>
+<td>1.8</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ratio_si2N_sp</span></code></td>
+<td>real</td>
+<td>algal Si to N (<span class="math">\(mol/mol\)</span>) for small phytoplankton</td>
+<td>0.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ratio_si2N_phaeo</span></code></td>
+<td>real</td>
+<td>algal Si to N (<span class="math">\(mol/mol\)</span>) for phaeocystis</td>
+<td>0.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ratio_S2N_diatoms</span></code></td>
+<td>real</td>
+<td>algal S to N (<span class="math">\(mol/mol\)</span>) for diatoms</td>
+<td>0.03</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ratio_S2N_sp</span></code></td>
+<td>real</td>
+<td>algal S to N (<span class="math">\(mol/mol\)</span>) for small phytoplankton</td>
+<td>0.03</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ratio_S2N_phaeo</span></code></td>
+<td>real</td>
+<td>algal S to N (<span class="math">\(mol/mol\)</span>) for phaeocystis</td>
+<td>0.03</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ratio_Fe2C_diatoms</span></code></td>
+<td>real</td>
+<td>algal Fe to C (<span class="math">\(\mu mol/mol\)</span>) for diatoms</td>
+<td>0.0033</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ratio_Fe2C_sp</span></code></td>
+<td>real</td>
+<td>algal Fe to C (<span class="math">\(\mu mol/mol\)</span>) for small phytoplankton</td>
+<td>0.0033</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ratio_Fe2C_phaeo</span></code></td>
+<td>real</td>
+<td>algal Fe to C (<span class="math">\(\mu mol/mol\)</span>) for phaeocystis</td>
+<td>0.1</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ratio_Fe2N_diatoms</span></code></td>
+<td>real</td>
+<td>algal Fe to N (<span class="math">\(\mu mol/mol\)</span>) for diatoms</td>
+<td>0.023</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ratio_Fe2N_sp</span></code></td>
+<td>real</td>
+<td>algal Fe to N (<span class="math">\(\mu mol/mol\)</span>) for small phytoplankton</td>
+<td>0.023</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ratio_Fe2N_phaeo</span></code></td>
+<td>real</td>
+<td>algal Fe to N (<span class="math">\(\mu mol/mol\)</span>) for phaeocystis</td>
+<td>0.7</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ratio_Fe2DON</span></code></td>
+<td>real</td>
+<td>Fe to N of DON (<span class="math">\(nmol/mol\)</span>)</td>
+<td>0.023</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ratio_Fe2DOC_s</span></code></td>
+<td>real</td>
+<td>Fe to C of DOC for saccharids (<span class="math">\(nmol/mol\)</span>)</td>
+<td>0.1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ratio_Fe2DOC_l</span></code></td>
+<td>real</td>
+<td>Fe to C of DOC for lipids (<span class="math">\(nmol/mol\)</span>)</td>
+<td>0.033</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">fr_resp</span></code></td>
+<td>real</td>
+<td>fraction of algal growth lost due to respiration</td>
+<td>0.05</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">tau_min</span></code></td>
+<td>real</td>
+<td>rapid mobile to stationary exchanges (<span class="math">\(s\)</span>)</td>
+<td>5200.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">tau_max</span></code></td>
+<td>real</td>
+<td>long time mobile to stationary exchanges (<span class="math">\(s\)</span>)</td>
+<td>1.73e5</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">algal_vel</span></code></td>
+<td>real</td>
+<td>0.5 <span class="math">\(cm/day (m/s)\)</span></td>
+<td>1.11e-8</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">R_dFe2dust</span></code></td>
+<td>real</td>
+<td>g/g (3.5% content)</td>
+<td>0.035</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dustFe_sol</span></code></td>
+<td>real</td>
+<td>solubility fraction</td>
+<td>0.005</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">chlabs_diatoms</span></code></td>
+<td>real</td>
+<td>diatoms chl absorption (<span class="math">\(1/m/(mg/m^3)\)</span>)</td>
+<td>0.03</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">chlabs_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton chl absorption (<span class="math">\(1/m/(mg/m^3)\)</span>)</td>
+<td>0.01</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">chlabs_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis chl absorption (<span class="math">\(1/m/(mg/m^3)\)</span>)</td>
+<td>0.05</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">alpha2max_low_diatoms</span></code></td>
+<td>real</td>
+<td>diatoms light limitation (<span class="math">\((W/m^2)^{-1}\)</span>)</td>
+<td>0.8</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">alpha2max_low_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton light limitation (<span class="math">\((W/m^2)^{-1}\)</span>)</td>
+<td>0.67</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">alpha2max_low_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis light limitation (<span class="math">\((W/m^2)^{-1}\)</span>)</td>
+<td>0.67</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">beta2max_diatoms</span></code></td>
+<td>real</td>
+<td>diatoms light inhibition (<span class="math">\((W/m^2)^{-1}\)</span>)</td>
+<td>0.018</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">beta2max_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton light inhibition (<span class="math">\((W/m^2)^{-1}\)</span>)</td>
+<td>0.0025</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">beta2max_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis light inhibition (<span class="math">\((W/m^2)^{-1}\)</span>)</td>
+<td>0.01</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">mu_max_diatoms</span></code></td>
+<td>real</td>
+<td>diatoms maximum growth rate (<span class="math">\(day^{-1}\)</span>)</td>
+<td>1.2</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">mu_max_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton maximum growth rate (<span class="math">\(day^{-1}\)</span>)</td>
+<td>0.851</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">mu_max_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis maximum growth rate (<span class="math">\(day^{-1}\)</span>)</td>
+<td>0.851</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">grow_Tdep_diatoms</span></code></td>
+<td>real</td>
+<td>diatoms Temperature dependence of growth (<span class="math">\(^o\)</span>C<span class="math">\(^{-1})\)</span></td>
+<td>0.06</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">grow_Tdep_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton Temperature dependence of growth <span class="math">\(^o\)</span>C<span class="math">\(^{-1}\)</span></td>
+<td>0.06</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">grow_Tdep_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis Temperature dependence of growth <span class="math">\(^o\)</span>C<span class="math">\(^{-1}\)</span></td>
+<td>0.06</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">fr_graze_diatoms</span></code></td>
+<td>real</td>
+<td>diatoms fraction grazed</td>
+<td>0.01</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">fr_graze_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton fraction grazed</td>
+<td>0.1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">fr_graze_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis fraction grazed</td>
+<td>0.1</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">mort_pre_diatoms</span></code></td>
+<td>real</td>
+<td>diatoms mortality (<span class="math">\(day^{-1}\)</span>)</td>
+<td>0.007</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">mort_pre_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton mortality (<span class="math">\(day^{-1}\)</span>)</td>
+<td>0.007</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">mort_pre_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis mortality (<span class="math">\(day^{-1}\)</span>)</td>
+<td>0.007</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">mort_Tdep_diatoms</span></code></td>
+<td>real</td>
+<td>diatoms temperature dependence of mortality <span class="math">\(^o\)</span>C<span class="math">\(^{-1}\)</span></td>
+<td>0.03</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">mort_Tdep_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton temperature dependence of mortality (<span class="math">\(^o\)</span>C<span class="math">\(^{-1}\)</span>)</td>
+<td>0.03</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">mort_Tdep_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis temperature dependence of mortality (<span class="math">\(^o\)</span>C<span class="math">\(^{-1}\)</span>)</td>
+<td>0.03</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">k_exude_diatoms</span></code></td>
+<td>real</td>
+<td>diatoms algal exudation (<span class="math">\(day^{-1}\)</span>)</td>
+<td>0.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">k_exude_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton algal exudation (<span class="math">\(day^{-1}\)</span>)</td>
+<td>0.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">k_exude_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis algal exudation (<span class="math">\(day^{-1}\)</span>)</td>
+<td>0.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">K_Nit_diatoms</span></code></td>
+<td>real</td>
+<td>datoms nitrate half saturation (<span class="math">\(mmol/m^3\)</span>)</td>
+<td>1.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">K_Nit_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton nitrate half saturation (<span class="math">\(mmol/m^3\)</span>)</td>
+<td>1.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">K_Nit_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis nitrate half saturation (<span class="math">\(mmol/m^3\)</span>)</td>
+<td>1.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">K_Am_diatoms</span></code></td>
+<td>real</td>
+<td>diatoms ammonium half saturation (<span class="math">\(mmol/m^3\)</span>)</td>
+<td>0.3</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">K_Am_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton ammonium half saturation (<span class="math">\(mmol/m^3\)</span>)</td>
+<td>0.3</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">K_Am_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis ammonium half saturation (<span class="math">\(mmol/m^3\)</span>)</td>
+<td>0.3</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">K_Sil_diatoms</span></code></td>
+<td>real</td>
+<td>diatoms silicate half saturation (<span class="math">\(mmol/m^3\)</span>)</td>
+<td>4.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">K_Sil_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton silicate half saturation (<span class="math">\(mmol/m^3\)</span>)</td>
+<td>0.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">K_Sil_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis silicate half saturation (<span class="math">\(mmol/m^3\)</span>)</td>
+<td>0.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">K_Fe_diatoms</span></code></td>
+<td>real</td>
+<td>diatoms iron half saturation (<span class="math">\(nM\)</span>)</td>
+<td>1.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">K_Fe_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton iron half saturation (<span class="math">\(nM\)</span>)</td>
+<td>0.2</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">K_Fe_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis iron half saturation (<span class="math">\(nM\)</span>)</td>
+<td>0.1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">f_don_protein</span></code></td>
+<td>real</td>
+<td>fraction of spilled grazing to proteins</td>
+<td>0.6</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">kn_bac_protein</span></code></td>
+<td>real</td>
+<td>Bacterial degredation of DON (<span class="math">\(day^{-1}\)</span>)</td>
+<td>0.03</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">f_don_Am_protein</span></code></td>
+<td>real</td>
+<td>fraction of remineralized DON to ammonium</td>
+<td>0.25</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">f_doc_s</span></code></td>
+<td>real</td>
+<td>fraction of mortality to DOC saccharids</td>
+<td>0.4</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">f_doc_l</span></code></td>
+<td>real</td>
+<td>fraction of mortality to DOC lipids</td>
+<td>0.4</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">f_exude_s</span></code></td>
+<td>real</td>
+<td>fraction of exudation to DOC saccharids</td>
+<td>1.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">f_exude_l</span></code></td>
+<td>real</td>
+<td>fraction of exudation to DOC lipids</td>
+<td>1.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">k_bac_s</span></code></td>
+<td>real</td>
+<td>bacterial degredation of DOC (<span class="math">\(day^{-1}\)</span>) saccharids</td>
+<td>0.03</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">k_bac_l</span></code></td>
+<td>real</td>
+<td>bacterial degredation of DOC (<span class="math">\(day^{-1}\)</span>) lipids</td>
+<td>0.03</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">T_max</span></code></td>
+<td>real</td>
+<td>maximum temperature (<span class="math">\(^o\)</span>C)</td>
+<td>0.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">fsal</span></code></td>
+<td>real</td>
+<td>Salinity limitation (ppt)</td>
+<td>1.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">op_dep_min</span></code></td>
+<td>real</td>
+<td>Light attenuates for optical depths exceeding min</td>
+<td>0.1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">fr_graze_s</span></code></td>
+<td>real</td>
+<td>fraction of grazing spilled or slopped</td>
+<td>0.5</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">fr_graze_e</span></code></td>
+<td>real</td>
+<td>fraction of assimilation excreted</td>
+<td>0.5</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">fr_mort2min</span></code></td>
+<td>real</td>
+<td>fractionation of mortality to Am</td>
+<td>0.5</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">fr_dFe</span></code></td>
+<td>real</td>
+<td>fraction of remineralized nitrogen (algal iron)</td>
+<td>0.3</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">k_nitrif</span></code></td>
+<td>real</td>
+<td>nitrification rate (<span class="math">\(day^{-1}\)</span>)</td>
+<td>0.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">t_iron_conv</span></code></td>
+<td>real</td>
+<td>desorption loss pFe to dFe (day)</td>
+<td>3065.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">max_loss</span></code></td>
+<td>real</td>
+<td>restrict uptake to % of remaining value</td>
+<td>0.9</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">max_dfe_doc1</span></code></td>
+<td>real</td>
+<td>max ratio of dFe to saccharides in the ice (<span class="math">\(nM Fe/\mu M C\)</span>)</td>
+<td>0.2</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">fr_resp_s</span></code></td>
+<td>real</td>
+<td>DMSPd fraction of respiration loss as DMSPd</td>
+<td>0.75</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">y_sk_DMS</span></code></td>
+<td>real</td>
+<td>fraction conversion given high yield</td>
+<td>0.5</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">t_sk_conv</span></code></td>
+<td>real</td>
+<td>Stefels conversion time (<span class="math">\(day\)</span>)</td>
+<td>3.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">t_sk_ox</span></code></td>
+<td>real</td>
+<td>DMS oxidation time (<span class="math">\(day\)</span>)</td>
+<td>10.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">algaltype_diatoms</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for diatoms</td>
+<td>0.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">algaltype_sp</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for small phytoplankton</td>
+<td>0.5</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">algaltype_phaeo</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for phaeocystis</td>
+<td>0.5</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">nitratetype</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for nitrate</td>
+<td>-1.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ammoniumtype</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for ammonium</td>
+<td>1.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">silicatetype</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for silicate</td>
+<td>-1.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">dmspptype</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for DMSP particulate</td>
+<td>0.5</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">dmspdtype</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for DMSP dissolved</td>
+<td>-1.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">humtype</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for humic matter</td>
+<td>1.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">doctype_s</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for DOC saccharids</td>
+<td>0.5</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">doctype_l</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for DOC lipids</td>
+<td>0.5</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">dontype_protein</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for proteins</td>
+<td>0.5</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">fedtype_1</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for FeD</td>
+<td>0.5</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">feptype_1</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for FeP</td>
+<td>0.5</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">zaerotype_bc1</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for zaerotype_bc1</td>
+<td>1.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">zaerotype_bc2</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for zaerotype_bc2</td>
+<td>1.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">zaerotype_dust1</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for dust1</td>
+<td>1.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">zaerotype_dust2</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for dust2</td>
+<td>1.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">zaerotype_dust3</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for dust3</td>
+<td>1.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">zaerotype_dust4</span></code></td>
+<td>real</td>
+<td>mobility type between stationary &lt;–&gt; mobile for dust4</td>
+<td>1.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ratio_C2N_diatoms</span></code></td>
+<td>real</td>
+<td>diatom algal C to N ratio (<span class="math">\(mol/mol\)</span>)</td>
+<td>7.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ratio_C2N_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton algal C to N ratio (<span class="math">\(mol/mol\)</span>)</td>
+<td>7.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ratio_C2N_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis algal C to N ratio (<span class="math">\(mol/mol\)</span>)</td>
+<td>7.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ratio_chl2N_diatoms</span></code></td>
+<td>real</td>
+<td>diatom algal chlorophyll to N ratio (<span class="math">\(mg/mmol\)</span>)</td>
+<td>2.1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ratio_chl2N_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton algal chlorophyll to N ratio (<span class="math">\(mg/mmol\)</span>)</td>
+<td>1.1</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ratio_chl2N_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis algal chlorophyll to N ratio (<span class="math">\(mg/mmol\)</span>)</td>
+<td>0.84</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">F_abs_chl_diatoms</span></code></td>
+<td>real</td>
+<td>diatom scales absorbed radiation for dEdd</td>
+<td>2.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">F_abs_chl_sp</span></code></td>
+<td>real</td>
+<td>small phytoplankton scales absorbed radiation for dEdd</td>
+<td>4.0</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">F_abs_chl_phaeo</span></code></td>
+<td>real</td>
+<td>phaeocystis scales absorbed radiation for dEdd</td>
+<td>5.0</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ratio_C2N_proteins</span></code></td>
+<td>real</td>
+<td>ratio of C to N in proteins (<span class="math">\(mol/mol\)</span>)</td>
+<td>7.0</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="bgc-tuning-parameters">
+<span id="tuning"></span><h1>3.5. BGC Tuning Parameters<a class="headerlink" href="#bgc-tuning-parameters" title="Permalink to this headline">¶</a></h1>
+<p>Biogeochemical tuning parameters are specified as namelist options in
+<strong>icepack_in</strong>. Table&nbsp;<a class="reference internal" href="#tab-bio-tracers2"><span class="std std-ref">Biogeochemical Reaction Parameters</span></a> provides a list of parameters
+used in the reaction equations, their representation in the code, a
+short description of each and the default values. Please keep in mind
+that there has only been minimal tuning of the model.</p>
+<table border="1" class="docutils" id="id11">
+<span id="tab-bio-tracers2"></span><caption><span class="caption-text"><em>Biogeochemical Reaction Parameters</em></span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="10%" />
+<col width="28%" />
+<col width="21%" />
+<col width="21%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Text Variable</th>
+<th class="head">Variable in code</th>
+<th class="head">Description</th>
+<th class="head">Value</th>
+<th class="head">units</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(f_{graze}\)</span></td>
+<td>fr_graze(1:3)</td>
+<td>fraction of growth grazed</td>
+<td>0, 0.1, 0.1</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(f_{res}\)</span></td>
+<td>fr_resp</td>
+<td>fraction of growth respired</td>
+<td>0.05</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(l_{max}\)</span></td>
+<td>max_loss</td>
+<td>maximum tracer loss fraction</td>
+<td>0.9</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(m_{pre}\)</span></td>
+<td>mort_pre(1:3)</td>
+<td>maximum mortality rate</td>
+<td>0.007, 0.007, 0.007</td>
+<td>day<span class="math">\(^{-1}\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(m_{T}\)</span></td>
+<td>mort_Tdep(1:3)</td>
+<td>mortality temperature decay</td>
+<td>0.03, 0.03, 0.03</td>
+<td><span class="math">\(^o\)</span>C<span class="math">\(^{-1}\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(T_{max}\)</span></td>
+<td>T_max</td>
+<td>maximum brine temperature</td>
+<td>0</td>
+<td><span class="math">\(^o\)</span>C</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(k_{nitr}\)</span></td>
+<td>k_nitrif</td>
+<td>nitrification rate</td>
+<td>0</td>
+<td>day<span class="math">\(^{-1}\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(f_{ng}\)</span></td>
+<td>fr_graze_e</td>
+<td>fraction of grazing excreted</td>
+<td>0.5</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(f_{gs}\)</span></td>
+<td>fr_graze_s</td>
+<td>fraction of grazing spilled</td>
+<td>0.5</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(f_{nm}\)</span></td>
+<td>fr_mort2min</td>
+<td>fraction of mortality to <span class="math">\({\mbox{NH$_4$}}\)</span></td>
+<td>0.5</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(f_{dg}\)</span></td>
+<td>f_don</td>
+<td>frac. spilled grazing to <span class="math">\({\mbox{DON}}\)</span></td>
+<td>0.6</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(k_{nb}\)</span></td>
+<td>kn_bac <span class="math">\(^a\)</span></td>
+<td>bacterial degradation of <span class="math">\({\mbox{DON}}\)</span></td>
+<td>0.03</td>
+<td>day<span class="math">\(^{-1}\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(f_{cg}\)</span></td>
+<td>f_doc(1:3)</td>
+<td>fraction of mortality to <span class="math">\({\mbox{DOC}}\)</span></td>
+<td>0.4, 0.4, 0.2</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(R_{c:n}^c\)</span></td>
+<td>R_C2N(1:3)</td>
+<td>algal carbon to nitrogen ratio</td>
+<td>7.0, 7.0, 7.0</td>
+<td>mol/mol</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(k_{cb}\)</span></td>
+<td>k_bac1:3<span class="math">\(^a\)</span></td>
+<td>bacterial degradation of DOC</td>
+<td>0.03, 0.03, 0.03</td>
+<td>day<span class="math">\(^{-1}\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\tau_{fe}\)</span></td>
+<td>t_iron_conv</td>
+<td>conversion time pFe <span class="math">\(\leftrightarrow\)</span> dFe</td>
+<td>3065.0</td>
+<td>day</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(r^{max}_{fed:doc}\)</span></td>
+<td>max_dfe_doc1</td>
+<td>max ratio of dFe to saccharids</td>
+<td>0.1852</td>
+<td>nM Fe<span class="math">\(/\mu\)</span>M C</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(f_{fa}\)</span></td>
+<td>fr_dFe</td>
+<td>fraction of remin. N to dFe</td>
+<td>0.3</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(R_{fe:n}\)</span></td>
+<td>R_Fe2N(1:3)</td>
+<td>algal Fe to N ratio</td>
+<td>0.023, 0.023, 0.7</td>
+<td>mmol/mol</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(R_{s:n}\)</span></td>
+<td>R_S2N(1:3)</td>
+<td>algal S to N ratio</td>
+<td>0.03, 0.03, 0.03</td>
+<td>mol/mol</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(f_{sr}\)</span></td>
+<td>fr_resp_s</td>
+<td>resp. loss as DMSPd</td>
+<td>0.75</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\tau_{dmsp}\)</span></td>
+<td>t_sk_conv</td>
+<td>Stefels rate</td>
+<td>3.0</td>
+<td>day</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\tau_{dms}\)</span></td>
+<td>t_sk_ox</td>
+<td>DMS oxidation rate</td>
+<td>10.0</td>
+<td>day</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(y_{dms}\)</span></td>
+<td>y_sk_DMS</td>
+<td>yield for DMS conversion</td>
+<td>0.5</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(K_{{\mbox{NO$_3$}}}\)</span></td>
+<td>K_Nit(1:3)</td>
+<td><span class="math">\({\mbox{NO$_3$}}\)</span> half saturation constant</td>
+<td>1,1,1</td>
+<td>mmol/m<span class="math">\(^{3}\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(K_{{\mbox{NH$_4$}}}\)</span></td>
+<td>K_Am(1:3)</td>
+<td><span class="math">\({\mbox{NH$_4$}}\)</span> half saturation constant</td>
+<td>0.3, 0.3, 0.3</td>
+<td>mmol/m<span class="math">\(^{-3}\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(K_{{\mbox{SiO$_3$}}}\)</span></td>
+<td>K_Sil(1:3)</td>
+<td>silicate half saturation constant</td>
+<td>4.0, 0, 0</td>
+<td>mmol/m<span class="math">\(^{-3}\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(K_{{\mbox{fed}}}\)</span></td>
+<td>K_Fe(1:3)</td>
+<td>iron half saturation constant</td>
+<td>1.0, 0.2, 0.1</td>
+<td><span class="math">\(\mu\)</span>mol/m<span class="math">\(^{-3}\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(op_{min}\)</span></td>
+<td>op_dep_min</td>
+<td>boundary for light attenuation</td>
+<td>0.1</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(chlabs\)</span></td>
+<td>chlabs(1:3)</td>
+<td>light absorption length per chla conc.</td>
+<td>0.03, 0.01, 0.05</td>
+<td>1<span class="math">\(/\)</span>m<span class="math">\(/\)</span>(mg<span class="math">\(/\)</span>m<span class="math">\(^{3}\)</span>)</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\alpha\)</span></td>
+<td>alpha2max_low(1:3)</td>
+<td>light limitation factor</td>
+<td>0.25, 0.25, 0.25</td>
+<td>m<span class="math">\(^2\)</span>/W</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\beta\)</span></td>
+<td>beta2max(1:3)</td>
+<td>light inhibition factor</td>
+<td>0.018, 0.0025, 0.01</td>
+<td>m<span class="math">\(^2\)</span>/W</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\mu_{max}\)</span></td>
+<td>mu_max(1:3)</td>
+<td>maximum algal growth rate</td>
+<td>1.44, 0.851, 0.851</td>
+<td>day<span class="math">\(^{-1}\)</span></td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\mu_T\)</span></td>
+<td>grow_Tdep(1:3)</td>
+<td>temperature growth factor</td>
+<td>0.06, 0.06, 0.06</td>
+<td>day<span class="math">\(^{-1}\)</span></td>
+</tr>
+<tr class="row-even"><td><span class="math">\(f_{sal}\)</span></td>
+<td>fsal</td>
+<td>salinity growth factor</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(R_{si:n}\)</span></td>
+<td>R_Si2N(1:3)</td>
+<td>algal silicate to nitrogen</td>
+<td>1.8, 0, 0</td>
+<td>mol/mol</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math">\(^a\)</span> only (1:2) of DOC and DOC parameters have physical meaning</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3.4. Case Settings</a><ul>
+<li><a class="reference internal" href="#table-of-icepack-settings">3.4.1. Table of Icepack Settings</a></li>
+<li><a class="reference internal" href="#table-of-namelist-inputs">3.4.2. Table of Namelist Inputs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bgc-tuning-parameters">3.5. BGC Tuning Parameters</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ug_testing.html"
+                        title="previous chapter">3.3. Testing Icepack</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ug_troubleshooting.html"
+                        title="next chapter">3.6. Troubleshooting</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/user_guide/ug_case_settings.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="ug_troubleshooting.html" title="3.6. Troubleshooting"
+             >next</a></li>
+        <li class="right" >
+          <a href="ug_testing.html" title="3.3. Testing Icepack"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Icepack 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >3. User Guide</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Los Alamos National Security, LLC (code) and National Center for Atmospheric Research (documentation).
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>
