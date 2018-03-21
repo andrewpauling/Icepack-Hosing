@@ -1,0 +1,6 @@
+# icepack.setup settings
+
+nprocs = 1
+data_dir = '/glade/p/cesm/pcwg_dev/Icepack_data/forcing'
+
+

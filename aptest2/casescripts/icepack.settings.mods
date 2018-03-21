@@ -1,0 +1,26 @@
+# icepack.setup settings
+
+setenv ICE_SANDBOX  /glade/u/home/apauling/icepack
+setenv ICE_SCRIPTS  /glade/u/home/apauling/icepack/configuration/scripts
+setenv ICE_CASENAME aptest2
+setenv ICE_CASEDIR  /glade/u/home/apauling/icepack/aptest2
+setenv ICE_MACHINE  cheyenne
+setenv ICE_COMPILER intel
+setenv ICE_MACHCOMP cheyenne_intel
+setenv ICE_RUNDIR   /glade/scratch/apauling/ICEPACK_RUNS/aptest2
+setenv ICE_GRID     col
+setenv ICE_NXGLOB   4
+setenv ICE_NTASKS   1
+setenv ICE_NTHRDS   1
+setenv ICE_BASELINE /glade/scratch/apauling/ICEPACK_BASELINE
+setenv ICE_BASEGEN  UnDeFiNeD
+setenv ICE_BASECOM  UnDeFiNeD
+setenv ICE_SPVAL    UnDeFiNeD
+setenv ICE_BFBCOMP  UnDeFiNeD
+setenv ICE_TEST     UnDeFiNeD
+setenv ICE_TESTNAME UnDeFiNeD
+setenv ICE_ACCOUNT P00000000
+
+# set_env.col
+
+setenv ICE_GRID       col

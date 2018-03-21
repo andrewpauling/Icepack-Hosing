@@ -1,0 +1,10 @@
+ 
+/var/spool/pbs/mom_priv/jobs/6037810.chadmin1.SC:
+ 
+ICEPACK rundir is /glade/scratch/apauling/ICEPACK_RUNS/aptest2
+ICEPACK log file is icepack.runlog.180321-123907
+ICEPACK run started : Wed Mar 21 12:39:07 MDT 2018
+ICEPACK run finished: Wed Mar 21 12:39:32 MDT 2018
+ 
+ ICEPACK COMPLETED SUCCESSFULLY 
+done /var/spool/pbs/mom_priv/jobs/6037810.chadmin1.SC

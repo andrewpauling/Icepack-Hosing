@@ -1,0 +1,5 @@
+#!/bin/csh -f 
+
+qsub ./icepack.run
+echo "`date` ${0}: aptest1 job submitted"  >> /glade/u/home/apauling/icepack/aptest1/README.case
+

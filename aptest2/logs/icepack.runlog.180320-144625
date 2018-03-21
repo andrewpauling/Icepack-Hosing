@@ -1,0 +1,119 @@
+ Reading namelist file   icepack_in                      
+ Reading setup_nml
+ Reading tracer_nml
+ Reading thermo_nml
+ Reading shortwave_nml
+ Reading ponds_nml
+ Reading forcing_nml
+ Diagnostic output will be in files 
+     icepack.runlog.timestamp
+     ice_diag.icefree
+     ice_diag.slab
+     ice_diag.full_ITD
+     ice_diag.land
+ -----------------------------------
+   ICEPACK model diagnostic output  
+ -----------------------------------
+  
+ WARNING: ktherm = 1 and tfrz_option = mushy
+ WARNING: For consistency, set tfrz_option = linear_salt
+  Document ice_in namelist parameters:
+  ==================================== 
+  
+  days_per_year             =      365
+  use_leap_years            =        F
+  year_init                 =     2016
+  istep0                    =        0
+  dt                        =     3600.00
+  npt                       =     8760
+  diagfreq                  =       24
+  dumpfreq                  =        y
+  restart                   =        T
+  restart_dir               = 
+ /glade/scratch/apauling/ICEPACK_RUNS/aptest2/restart/
+  restart_file              = iced
+  ice_ic                    = iced.2016-01-01-00000
+  kitd                      =        1
+  kcatbound                 =        1
+  ndtd                      =        1
+  kstrength                 =        1
+  krdg_partic               =        1
+  krdg_redist               =        1
+  mu_rdg                    =        3.00
+  Cf                        =       17.00
+  shortwave                 =     dEdd
+  BGC coupling is switched OFF
+  R_ice                     =        0.00
+  R_pnd                     =        0.00
+  R_snw                     =        1.50
+  dT_mlt                    =        1.50
+  rsnw_mlt                  =     1500.00
+  kalg                      =        0.60
+  hp1                       =        0.01
+  hs0                       =        0.00
+  rfracmin                  =        0.15
+  rfracmax                  =        1.00
+  hs1                       =        0.03
+  dpscale                   =        0.00
+  frzpnd                    =     hlid
+  ktherm                    =        1
+  conduct                   = bubbly  
+  atmbndy                   =  default
+  formdrag                  =        F
+  highfreq                  =        F
+  natmiter                  =        5
+  calc_strair               =        T
+  calc_Tsfc                 =        T
+  atm_data_type             = clim
+  ocn_data_type             = SHEBA
+  bgc_data_type             = default
+  update_ocn_f              =        F
+  l_mpond_fresh             =        F
+  ustar_min                 =    0.000500
+  fbot_xfer_type            = constant
+  oceanmixed_ice            =        F
+  tfrz_option               = mushy
+  restore_ocn               =        F
+  tr_iage                   =        F
+  tr_FY                     =        F
+  tr_lvl                    =        T
+  tr_pond_cesm              =        F
+  tr_pond_lvl               =        T
+  tr_pond_topo              =        F
+  tr_aero                   =        F
+  
+                  max_ntrcr =       28
+                      ntrcr =       21
+  
+                    nt_sice =       10
+                    nt_qice =        2
+                    nt_qsno =        9
+  
+                          ncat       5
+                         nilyr       7
+                         nslyr       1
+  
+                            nx       4
+  
+ Reading zbgc_nml
+  tr_brine                  =        F
+ 
+  (icepack_init_itd_hist)
+  hin_max(n-1) < Cat n < hin_max(n)
+   0.000000000000000E+000  < Cat            1  <   0.600000000000000
+   0.600000000000000       < Cat            2  <    1.40000000000000
+    1.40000000000000       < Cat            3  <    2.40000000000000
+    2.40000000000000       < Cat            4  <    3.60000000000000
+    3.60000000000000       < Cat            5  <    5.00000000000000
+ 
+ Using restart dump=iced.2016-01-01-00000
+forrtl: severe (24): end-of-file during read, unit 12, file /glade2/scratch2/apauling/ICEPACK_RUNS/aptest2/iced.2016-01-01-00000
+Image              PC                Routine            Line        Source             
+icepack            0000000000538B8C  Unknown               Unknown  Unknown
+icepack            00000000005507C9  Unknown               Unknown  Unknown
+icepack            000000000044515D  icedrv_restart_mp         191  icedrv_restart.F90
+icepack            000000000040666E  icedrv_initmod_mp          83  icedrv_InitMod.F90
+icepack            00000000004067A8  MAIN__                     42  icedrv_MAIN.F90
+icepack            0000000000402FDE  Unknown               Unknown  Unknown
+libc-2.19.so       00002AAAAB9F4B25  __libc_start_main     Unknown  Unknown
+icepack            0000000000402EE9  Unknown               Unknown  Unknown

@@ -1,0 +1,6 @@
+Tue Mar  6 16:15:25 MST 2018./icepack.setup --case aptest1 --mach cheyenne --env intel --set col
+Tue Mar  6 16:15:26 MST 2018./icepack.setup adding namelist modes set_env.col
+Tue Mar  6 16:15:26 MST 2018./icepack.setup adding namelist modes set_env.col
+Tue Mar  6 16:20:54 MST 2018 ./icepack.build:aptest1 build completed icepack.bldlog.180306-162002
+Tue Mar  6 16:23:02 MST 2018 ./icepack.submit: aptest1 job submitted
+Tue Mar  6 16:23:23 MST 2018 /var/spool/pbs/mom_priv/jobs/5710102.chadmin1.SC: aptest1 run completed icepack.runlog.180306-162321

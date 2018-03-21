@@ -1,0 +1,27 @@
+Tue Mar 20 10:46:19 MDT 2018./icepack.setup --case aptest2 --mach cheyenne --env intel
+Tue Mar 20 10:46:20 MDT 2018./icepack.setup adding namelist modes set_env.col
+Tue Mar 20 10:55:56 MDT 2018 ./icepack.build:aptest2 build completed icepack.bldlog.180320-105504
+Tue Mar 20 10:56:44 MDT 2018 ./icepack.submit: aptest2 job submitted
+Tue Mar 20 10:56:49 MDT 2018 /var/spool/pbs/mom_priv/jobs/6002699.chadmin1.SC: aptest2 run completed icepack.runlog.180320-105648
+Tue Mar 20 13:20:55 MDT 2018 ./icepack.submit: aptest2 job submitted
+Tue Mar 20 13:21:03 MDT 2018 /var/spool/pbs/mom_priv/jobs/6005191.chadmin1.SC: aptest2 run did NOT complete icepack.runlog.180320-132103
+Tue Mar 20 14:40:53 MDT 2018 ./icepack.submit: aptest2 job submitted
+Tue Mar 20 14:41:04 MDT 2018 /var/spool/pbs/mom_priv/jobs/6007855.chadmin1.SC: aptest2 run did NOT complete icepack.runlog.180320-144104
+Tue Mar 20 14:43:58 MDT 2018 ./icepack.submit: aptest2 job submitted
+Tue Mar 20 14:44:09 MDT 2018 /var/spool/pbs/mom_priv/jobs/6007871.chadmin1.SC: aptest2 run did NOT complete icepack.runlog.180320-144409
+Tue Mar 20 14:46:19 MDT 2018 ./icepack.submit: aptest2 job submitted
+Tue Mar 20 14:46:25 MDT 2018 /var/spool/pbs/mom_priv/jobs/6007878.chadmin1.SC: aptest2 run did NOT complete icepack.runlog.180320-144625
+Tue Mar 20 14:49:45 MDT 2018 ./icepack.submit: aptest2 job submitted
+Tue Mar 20 14:49:57 MDT 2018 /var/spool/pbs/mom_priv/jobs/6007887.chadmin1.SC: aptest2 run did NOT complete icepack.runlog.180320-144957
+Tue Mar 20 14:57:57 MDT 2018 ./icepack.submit: aptest2 job submitted
+Tue Mar 20 14:58:06 MDT 2018 /var/spool/pbs/mom_priv/jobs/6007913.chadmin1.SC: aptest2 run completed icepack.runlog.180320-145805
+Tue Mar 20 15:05:06 MDT 2018 ./icepack.submit: aptest2 job submitted
+Tue Mar 20 15:05:20 MDT 2018 /var/spool/pbs/mom_priv/jobs/6007927.chadmin1.SC: aptest2 run completed icepack.runlog.180320-150518
+Tue Mar 20 15:10:33 MDT 2018 ./icepack.submit: aptest2 job submitted
+Tue Mar 20 15:10:41 MDT 2018 /var/spool/pbs/mom_priv/jobs/6007947.chadmin1.SC: aptest2 run completed icepack.runlog.180320-151038
+Tue Mar 20 15:12:55 MDT 2018 ./icepack.submit: aptest2 job submitted
+Tue Mar 20 15:13:01 MDT 2018 /var/spool/pbs/mom_priv/jobs/6007972.chadmin1.SC: aptest2 run completed icepack.runlog.180320-151300
+Wed Mar 21 12:17:41 MDT 2018 ./icepack.submit: aptest2 job submitted
+Wed Mar 21 12:17:51 MDT 2018 /var/spool/pbs/mom_priv/jobs/6036701.chadmin1.SC: aptest2 run completed icepack.runlog.180321-121748
+Wed Mar 21 12:39:02 MDT 2018 ./icepack.submit: aptest2 job submitted
+Wed Mar 21 12:39:32 MDT 2018 /var/spool/pbs/mom_priv/jobs/6037810.chadmin1.SC: aptest2 run completed icepack.runlog.180321-123907
