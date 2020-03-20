@@ -89,7 +89,7 @@
 
       use icedrv_calendar, only: dt, dt_dyn, ndtd, diagfreq, write_restart, istep
       use icedrv_diagnostics, only: runtime_diags, init_mass_diags
-!     use icedrv_diagnostics, only: icedrv_diagnostics_debug
+      use icedrv_diagnostics, only: icedrv_diagnostics_debug
       use icedrv_diagnostics_bgc, only: hbrine_diags, zsal_diags, bgc_diags
       use icedrv_flux, only: init_history_therm, init_history_bgc, &
           daidtt, daidtd, dvidtt, dvidtd, dagedtt, dagedtd, init_history_dyn
@@ -192,6 +192,7 @@
       
       if (mod(istep,diagfreq) == 0) then
          call runtime_diags(dt)       ! log file
+         call icedrv_diagnostics_debug ('Category Diagnostics')
          if (solve_zsal)              call zsal_diags
          if (skl_bgc .or. z_tracers)  call bgc_diags
          if (tr_brine)                call hbrine_diags

@@ -7,3 +7,10 @@ doc/build
 
 # Ignore macOS cache files
 .DS_Store
+
+# Ignore cases and other junk from my work
+apreminder
+aptest1
+aptest2
+control30lyr_1cat
+sepoct20cm30lyr_1cat

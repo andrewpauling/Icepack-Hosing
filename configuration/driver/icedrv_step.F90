@@ -6,7 +6,7 @@
 
       module icedrv_step
 
-      use icedrv_constants, only: c0, nu_diag
+      use icedrv_constants, only: c0, nu_diag, ice_stdout
       use icedrv_kinds
 !      use icedrv_calendar, only: istep1
       use icedrv_forcing, only: ocn_data_type
@@ -102,7 +102,7 @@
       use icedrv_arrays_column, only: hfreebd, hdraft, hridge, distrdg
       use icedrv_arrays_column, only: hkeel, dkeel, lfloe, dfloe
       use icedrv_arrays_column, only: fswsfcn, fswintn, fswthrun, Sswabsn, Iswabsn
-      use icedrv_calendar, only: yday
+      use icedrv_calendar, only: yday, month
       use icedrv_domain_size, only: ncat, nilyr, nslyr, n_aero, nx
       use icedrv_flux, only: frzmlt, sst, Tf, strocnxT, strocnyT, rside, fbot
       use icedrv_flux, only: meltsn, melttn, meltbn, congeln, snoicen, uatm, vatm
@@ -292,7 +292,7 @@
             dsnown      (i,:), &
             lmask_n     (i), lmask_s     (i), &
             mlt_onset   (i), frz_onset   (i), &
-            yday,  prescribed_ice)
+            yday,  prescribed_ice, month, ice_stdout)
 
         if (tr_aero) then
           do n = 1, ncat

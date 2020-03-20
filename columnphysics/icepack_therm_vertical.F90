@@ -97,11 +97,13 @@
                                   congel,      snoice,    &
                                   mlt_onset,   frz_onset, &
                                   yday,        dsnow,     &
-                                  prescribed_ice)
+                                  prescribed_ice, month, ice_stdout)
 
       integer (kind=int_kind), intent(in) :: &
          nilyr   , & ! number of ice layers
-         nslyr       ! number of snow layers
+         nslyr   , & ! number of snow layers
+         month   , &
+         ice_stdout
 
       real (kind=dbl_kind), intent(in) :: &
          dt          ! time step
@@ -299,7 +301,7 @@
                                               fsensn,    flatn,     &
                                               flwoutn,   fsurfn,    &
                                               fcondtopn, fcondbot,  &
-                                              fadvocn,   snoice)
+                                              fadvocn,   snoice, month, ice_stdout)
             if (icepack_warnings_aborted(subname)) return
 
          else ! ktherm
@@ -387,7 +389,7 @@
                              congel,      snoice,    &
                              mlt_onset,   frz_onset, &
                              zSin,        sss,       &
-                             dsnow)
+                             dsnow, ice_stdout)
       if (icepack_warnings_aborted(subname)) return
 
       !-----------------------------------------------------------------
@@ -429,6 +431,8 @@
       freshn = freshn + evapn - (rhoi*dhi + rhos*dhs) / dt
       fsaltn = fsaltn - rhoi*dhi*ice_ref_salinity*p001/dt
       fhocnn = fhocnn + fadvocn ! for ktherm=2 
+! CMB 
+!      write(ice_stdout,*) 'fhocnn B = ',fhocnn, fadvocn
 
       if (hin == c0) then
          if (tr_pond_topo) fpond = fpond - aicen * apond * hpond
@@ -1009,11 +1013,12 @@
                                     congel,    snoice,   &  
                                     mlt_onset, frz_onset,&
                                     zSin,      sss,      &
-                                    dsnow)
+                                    dsnow, ice_stdout)
 
       integer (kind=int_kind), intent(in) :: &
          nilyr , & ! number of ice layers
-         nslyr     ! number of snow layers
+         nslyr,  & ! number of snow layers
+	 ice_stdout
 
       real (kind=dbl_kind), intent(in) :: &
          dt          , & ! time step
@@ -1398,6 +1403,8 @@
 
       fhocnn = fbot &
              + (esub + etop_mlt + ebot_mlt)/dt
+! CMB 
+!      write(ice_stdout,*) 'fhocnn A = ',fhocnn, fbot, esub, etop_mlt, ebot_mlt
 
 !---!-----------------------------------------------------------------
 !---! Add new snowfall at top surface.
@@ -1553,14 +1560,17 @@
       !-----------------------------------------------------------------
 
       if (ktherm == 2) then
+!        write(ice_stdout,*) 'fhocnn C1 = ',fhocnn ! CMB
          do k = 1, nslyr
             if (hsn <= puny) then
+               write(ice_stdout,*) zqsn(k),hsn
                fhocnn = fhocnn &
                       + zqsn(k)*hsn/(real(nslyr,kind=dbl_kind)*dt)
                zqsn(k) = -rhos*Lfresh
                hslyr = c0
             endif
          enddo
+!        write(ice_stdout,*) 'fhocnn C2 = ',fhocnn  ! CMB
       endif
 
       !-----------------------------------------------------------------
@@ -1586,6 +1596,7 @@
 
       ! melt water is no longer zero enthalpy with ktherm=2
       fhocnn = fhocnn + emlt_ocn/dt
+!        write(ice_stdout,*) 'fhocnn D = ',fhocnn,emlt_ocn  ! CMB
       efinal = efinal + emlt_atm ! for conservation check
 
       end subroutine thickness_changes
@@ -1843,7 +1854,7 @@
       ferr = abs(efinal-einit-einp) / dt
 
       if (ferr > ferrmax) then
-         call icepack_warnings_setabort(.true.,__FILE__,__LINE__)
+!         call icepack_warnings_setabort(.true.,__FILE__,__LINE__)
          call icepack_warnings_add(subname//" conservation_check_vthermo: Thermo energy conservation error" ) 
 
          write(warnstr,*) subname, 'Thermo energy conservation error'
@@ -2045,13 +2056,15 @@
                                     dsnown      , &
                                     lmask_n     , lmask_s     , &
                                     mlt_onset   , frz_onset   , &
-                                    yday        , prescribed_ice)
+                                    yday        , prescribed_ice,month, ice_stdout)
 
       integer (kind=int_kind), intent(in) :: &
          ncat    , & ! number of thickness categories
          nilyr   , & ! number of ice layers
          nslyr   , & ! number of snow layers
-         n_aero      ! number of aerosol tracers in use
+         n_aero  , & ! number of aerosol tracers in use
+         month   , & 
+         ice_stdout
 
       real (kind=dbl_kind), intent(in) :: &
          dt          , & ! time step
@@ -2377,7 +2390,7 @@
                                  congeln  (n), snoicen  (n), &
                                  mlt_onset,    frz_onset,    &
                                  yday,         dsnown   (n), &
-                                 prescribed_ice)
+                                 prescribed_ice, month, ice_stdout)
 
             if (icepack_warnings_aborted(subname)) then
                call icepack_warnings_add(subname//' ice: Vertical thermo error: ')

@@ -351,7 +351,8 @@
       ! printing info for routine print_state
 
       integer (kind=int_kind), parameter :: &
-         check_step = 1439, & ! begin printing at istep1=check_step
+!         check_step = 1439, & ! begin printing at istep1=check_step
+         check_step = 0,    & ! begin printing at istep1=check_step
          ip = 3               ! i index
 
       if (istep1 >= check_step) then
